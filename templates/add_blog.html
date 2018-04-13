@@ -4,23 +4,17 @@
     <center><h1>Add a Frakkin Blog</h1></center>
     <form method='post'>
         <label>
-            New Task:
+            Title for new blog:
             <input type="text" name='task' />
         </label>
-        <input type="submit" value='Add Task' />
+        <input type="submit" value='Add Entry' />
     </form>
+    <ul>
+        {% for task in tasks %}
+        <li>{{task}}</li>
+        {% endfor %}
+    </ul>
 
-    <hr />
 
-    {% if tasks|length == 0 %}
-    <p>No tasks yet</p>
-    {% else %}
-
-        <ul>
-            {% for task in tasks %}
-            <li>{{task}}</li>
-            {% endfor %}
-        </ul>
-
-    {% endif %}
+    
 {% endblock %}

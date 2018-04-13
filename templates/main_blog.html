@@ -2,15 +2,6 @@
 
 {% block content %}
 <center><h1>Build a smegging Blog!</h1></center>
-    <form method='post'>
-        <label>
-            New Task:
-            <input type="text" name='task' />
-        </label>
-        <input type="submit" value='Add Task' />
-    </form>
-
-    <hr />
 
     {% if tasks|length == 0 %}
     <p>No frellin tasks yet</p>
