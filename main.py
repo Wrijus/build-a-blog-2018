@@ -17,7 +17,7 @@ class Task(db.Model):
 
 
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/blog', methods=['POST', 'GET'])
 def list_of_posts():
 
     if request.method == 'POST':
@@ -26,10 +26,10 @@ def list_of_posts():
     
     tasks = Task.query.all()
 
-    return render_template('main_blog.html',title="Build a smegging Blog!", tasks=tasks)
+    return render_template('blog.html',title="Build a smegging Blog!", tasks=tasks)
 
 
-@app.route('/add_blog', methods=['POST', 'GET'])
+@app.route('/newpost', methods=['POST', 'GET'])
 def add_new_post():
 
 
@@ -41,7 +41,7 @@ def add_new_post():
 
     tasks = Task.query.all()
 
-    return render_template('add_blog.html')
+    return render_template('newpost.html')
 
 if __name__ == '__main__':
     app.run()
