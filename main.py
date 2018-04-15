@@ -16,6 +16,7 @@ def list_of_posts():
 @app.route('/add_blog', methods=['POST', 'GET'])
 def add_new_post():
 
+
     if request.method == 'POST':
         task = request.form['task']
         tasks.append(task)
