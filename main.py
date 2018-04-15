@@ -15,12 +15,16 @@ class Task(db.Model):
     def __init__(self, name):
         self.name = name
 
-tasks = []
+
 
 @app.route('/', methods=['POST', 'GET'])
 def list_of_posts():
 
-
+    if request.method == 'POST':
+        task_name = request.form['task']
+        new_task = Task(task_name)
+    
+    tasks = Task.query.all()
 
     return render_template('main_blog.html',title="Build a smegging Blog!", tasks=tasks)
 
@@ -30,8 +34,12 @@ def add_new_post():
 
 
     if request.method == 'POST':
-        task = request.form['task']
-        tasks.append(task)
+        task_name = request.form['task']
+        new_task = Task(task_name)
+        db.session.add(new_task)
+        db.session.commit()
+
+    tasks = Task.query.all()
 
     return render_template('add_blog.html', tasks=tasks)
 
