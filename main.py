@@ -35,13 +35,13 @@ def add_new_post():
 
     if request.method == 'POST':
         task_name = request.form['task']
-        new_task = Task(task_name)
+        new_task = Task(task_name)        
         db.session.add(new_task)
         db.session.commit()
 
     tasks = Task.query.all()
 
-    return render_template('add_blog.html', tasks=tasks)
+    return render_template('add_blog.html')
 
 if __name__ == '__main__':
     app.run()
