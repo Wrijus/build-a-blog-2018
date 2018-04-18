@@ -2,34 +2,26 @@
 
 {% block content %}
     <center><h1>Add a Frakkin Blog</h1></center>
-    <form method='post'>
-
-
-                
+    <form method="post">    
 
         <label>
             Title for new blog:<br>
-            <input type="text" name='task' /><br>
+            <input type="text" name="title" /><br>
         </label>
         
         <br><br>
 
-        <label>
-            
+        <label>      
             Your New PooDoo(Blog)<br>
-            <textarea name="new-post"></textarea><br>
+            <textarea name="body" rows="10" cols="30"></textarea><br>
         </label>
 
         <br><br><br>
 
-        <input type="submit" value='Add Entry' />
+        <input type="submit" value="Add Entry" />
     
     </form>
-    <ul>
-        {% for task in tasks %}
-        <li>{{task.name}}</li>
-        {% endfor %}
-    </ul>
+
 
 
     

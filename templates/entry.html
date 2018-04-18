@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% for id in id %}
+    <h2>title: {{ id.title }}</h2>
+    <h3>body: {{ body }}</h3>
+    {% endfor %}
+    
+
+{% endblock %}
