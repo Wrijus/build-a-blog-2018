@@ -23,16 +23,17 @@ class Blog(db.Model):
 def list_of_posts():
   
     blogs = Blog.query.all()
-    one_entry = Blog.query.filter_by(id=3).first()
-    return render_template('blog.html',title="Build a smegging Blog!", blogs=blogs, one_entry=one_entry)
+    
+    return render_template('blog.html',title="Build a smegging Blog!", blogs=blogs)
 
-@app.route('/test/<int:id>', methods=['GET'])
+@app.route('/test/<id>', methods=['GET'])
 def pull_entry(id):
 
-     
-    blogs = Blog.query.filter_by(id=id).first()
-    return render_template('entry.html', blogs=blogs)
-
+    blogs = Blog.query.all()
+    one_entry = Blog.query.filter_by(id=id).first()
+    return render_template('entry.html',title="Posted Smeg", blogs=blogs, one_entry=one_entry)
+   
+   
 @app.route('/newpost', methods=['POST', 'GET'])
 def add_new_post():
 
