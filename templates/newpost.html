@@ -17,9 +17,10 @@
         </label>
 
         <br><br><br>
-
-        <input type="submit" value="Add Entry" />
-    
+        <form action="/blog<id>">
+            <input type="hidden" name="blog-id" value="{{id}}" />
+            <input type="submit" value="Add Entry" />
+        </form>
     </form>
 
 
