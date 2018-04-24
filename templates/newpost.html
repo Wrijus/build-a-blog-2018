@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+    <style>
+        .error { color: red; }
+    </style>
+
     <center><h1>Add a Frakkin Blog</h1></center>
     <form method="post">    
 
@@ -9,16 +14,20 @@
             <input type="text" name="title" /><br>
         </label>
         
+        <p class="error">{{title_error}}</p>
+        
         <br><br>
 
         <label>      
             Your New PooDoo(Blog)<br>
-            <textarea name="body" rows="10" cols="30"></textarea><br>
+            <textarea name="body" rows="10" cols="30"></textarea>
         </label>
-
+        
+        <p class="error">{{body_error}}</p>
+        
         <br><br><br>
-        <form action="/blog">
-            <input type="hidden" name="blog_id" value="{{id}}" />
+        <form method="GET" action="/blog">
+            <input type="hidden" name="one_entry" value="{{blog_id}}" />
             <input type="submit" value="Add Entry" />
         </form>
     </form>

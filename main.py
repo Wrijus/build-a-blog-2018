@@ -33,16 +33,32 @@ def list_of_posts():
 @app.route('/newpost', methods=['POST', 'GET'])
 def add_new_post():
 
+    title_error = ''
+    body_error = ''
+
 
     if request.method == 'POST':
         title = request.form['title']
+        if title == '':
+           title_error = "Please add a boody Title"
+        
         body = request.form['body']
-        new_blog = Blog(title, body)   
-        db.session.add(new_blog)
-        db.session.commit()
+        if body == '':
+            body_error = "Please add some freakin text to the body"
 
-    blogs = Blog.query.all()
+        if not title_error and not body_error:   #if it works
+            new_blog = Blog(title, body)   
+            db.session.add(new_blog)
+            db.session.commit()
+            id = request.args.get('id')
+            one_entry = Blog(title, body)
+            return render_template('entry.html', title="Posted Smeg,", one_entry=one_entry)   
+
+        else:
+            return render_template('newpost.html', title_error=title_error, body_error=body_error)
+           
     return render_template('newpost.html')
+
 
 if __name__ == '__main__':
     app.run()
