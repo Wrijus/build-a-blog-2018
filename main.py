@@ -55,7 +55,7 @@ def add_new_post():
             return render_template('entry.html', title="Posted Smeg,", one_entry=one_entry)   
 
         else:
-            return render_template('newpost.html', title_error=title_error, body_error=body_error)
+            return render_template('newpost.html', title_error=title_error, body_error=body_error, title=title, body=body)
            
     return render_template('newpost.html')
 
